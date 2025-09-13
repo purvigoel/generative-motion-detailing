@@ -1,9 +1,377 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
-        <p>This is an example of a simple HTML page with one paragraph.</p>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Generating Detailed Character Motion from Blocking Poses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/media/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/media/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/media/favicon-16x16.png">
+    <link rel="manifest" href="./assets/media/site.webmanifest">
+
+    <meta property="og:site_name" content="Generative Motion Infilling From Imprecisely Timed Keyframes" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:title" content="Generative Motion Infilling From Imprecisely Timed Keyframes" />
+    <meta property="og:description" content="Generative Motion Infilling From Imprecisely Timed Keyframes, 2025." />
+    <script type="module" src="https://unpkg.com/@google/model-viewer@2.0.1/dist/model-viewer.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.js?features=IntersectionObserver"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/js/webflow.fd002feec.js"></script>
+    <script src="./assets/scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sticksy/dist/sticksy.min.js"></script>
+</head>
+
+<body class="noscroll">
+    <div class="button-bar text-light" style="padding-bottom: 10px; background-color: rgb(35, 35, 35);">
+        <div class="container" style="max-width: 768px;">
+            <h1 class="text-center">Generating Detailed Character Motion<br> from Blocking Poses</h1>
+        </div>
+        <div class="container" style="max-width: 768px;">
+            <h3 class="text-center" stye="font-size:2rem;">SIGGRAPH 2025</h3>
+        </div>
+        <div class="container" style="max-width: 768px; padding-bottom: 20px;">
+            <div class="row authors">
+                <div class="col">
+                    <h5 class="text-center"><a href="https://www.purvigoel.com/">Purvi Goel<sup>1</sup></a></h5>
+                    <h6 class="text-center"></h6>
+                </div>
+                <div class="col">
+                    <h5 class="text-center"><a href="https://guytevet.github.io/">Guy Tevet<sup>1</sup></a></h5>
+                    <h6 class="text-center"></h6>
+		        </div>
+                <div class="col">
+                    <h5 class="text-center"><a href="https://tml.stanford.edu/">C. Karen Liu<sup>1</sup></a></h5>
+                    <h6 class="text-center"></h6>
+		</div>
+		<div class="col">
+                    <h5 class="text-center"><a href="https://graphics.stanford.edu/~kayvonf/">Kayvon Fatahalian<sup>1</sup></a></h5>
+                    <h6 class="text-center"></h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="max-width: 768px; padding-bottom: 0px;">
+            <div class="row authors">
+                <div class="col">
+                    <h6 style="margin-top: 10px;" class="text-center"><sup>1</sup>Stanford University</h6>
+                </div>
+            </div>
+        </div>
+        <div class="buttons" style="margin-bottom: 8px;">
+            <a class="btn text-light" role="button" href="http://arxiv.org/abs/2503.01016">
+                Paper
+            </a>
+            <a class="btn text-light" role="button" href="http://arxiv.org/abs/2503.01016">
+                Supplement
+            </a>
+            <a class="btn text-light" role="button" href="">
+                Code (Coming Soon)
+            </a>
+            <a class="btn text-light" role="button" href="">
+                Video (Coming Soon)
+            </a>
+        </div>
+    </div>
+    
+    <div style="background-color: rgb(255,255,255);">
+        
+
+        <div class="container" style="max-width: 768px; padding-top: 30px; padding-bottom: 0px;">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <p>
+                        <!-- <strong> -->
+                            We focus on the problem of using generative diffusion models to convert a rough "sketch"
+                            of a desired motion, represented by a temporally sparse set of coarsely posed, imprecisely timed blocking poses, into a detailed animation.
+
+                            Current diffusion models can address (a) generating motion from temporally sparse constraints, and (b) correcting the timing of imprecisely-timed keyframes, but we find no good solution for handling the coarse posing of input blocking poses.
+
+                            Our key idea is simple: at certain denoising steps, we blend the outputs of an unconditioned diffusion model with <b><i>input</i></b> blocking pose constraints using per-blocking-pose tolerance weights, and pass the result as an input condition to a pre-existing motion retiming model.
+                             This can be thought of as refining the blocking poses themselves as they condition the motion generation process. 
+                        <!-- </strong> -->
+                    </p>
+                    
+
+                </div>
+            </div>
+        </div>
+        <div class="container" style="max-width: 768px; padding-top: 10px; ">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="assets/images/banner.png" style="width:100%;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-bar" style="padding-top: 0px; padding-bottom: 0px; background-color: rgb(255,255,255);">
+            <center> <p>Jump to:</p></center>
+            <div class="buttons" style="margin-bottom: 8px; margin-top: 0px;">
+                <a class="btn btn-black-outline" role="button" href="#section0" style="color: black; border: 1px solid black;">
+                    Motivation
+                </a>
+                <a class="btn btn-black-outline" role="button" href="#section1" style="color: black; border: 1px solid black;">
+                    Problem Illustration
+                </a>
+                <a class="btn btn-black-outline" role="button" href="#section2" style="color: black; border: 1px solid black;">
+                    Method Summary
+                </a>
+                <a class="btn btn-black-outline" role="button" href="#section4" style="color: black; border: 1px solid black;">
+                    Results
+                </a>
+                <a class="btn btn-black-outline" role="button" href="#section5" style="color: black; border: 1px solid black;">
+                    FAQ/Hindsights
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="section0" style="background-color: rgb(240, 240, 240);">
+        <div class="container" style="padding-top: 30px; padding-bottom: 30px; text-align:center;">
+            <p><b>Motivation.</b> One of the most common workflows in animation begins with <i>motion blocking</i>: specifying a coarse set ofposes ("blocking poses" or "keys") that convey the gist of the desired action.
+                Blocking poses are typically few in number, imprecise in timing, and coarse or incomplete in posing. They are intended as scaffolding for future <i>motion detailing</i> passes where an animator fills in the details that bring the motion to life, 
+                while adjusting the timing/posing the blocking poses themsleves as necessary [Cooper 21, Lasseter 1987, Williams 2009].
+                
+                Unfortunately, there is no existing diffusion technique that robustly performs motion detailing: converting blocking poses to a plausible, detailed character animation, a task that we call <i>motion detailing</i>. Running a standard motion-inbetweening model on blocking poses can result in unrealistic motion,  because the blocking poses themselves are unrealistic.
+
+            </p>
+        </div>
+    </div>
+
+    
+    
+    
+    <div id="section1" style="background-color: rgb(240, 240, 240);"></div>
+        <div class="container" style="padding-top: 30px; padding-bottom: 30px; text-align:center;">
+            <p><b>Problem Illustration:</b> 
+                Consider the blocking poses in the figure below (top left), of a character stepping forward and kicking. The goal is to convert these blocking poses into a detailed animation.
+
+                <a href="https://purvigoel.github.io/imprecise-timing/">Goel et al [2025]</a> presented a motion retiming model, but it requires well-posed keyframes. Running the retiming model or a standard inbetweening model on blocking poses can result in unrealistic motion, because the blocking poses themselves are unrealistic.
+                We find that in this setting, standard ways for leveraging the diffusion prior to enhance pose detail, such as blending diffusion outputs with desired keyframes [Shafir 2023, Tseng 2022], or using keyposes as external constraints in reconstruction guidance [Xie 2023], also fail to produce plausible motions. </p>
+        </div>
+    </div>
+
+    <div style="background-color: rgb(255, 255, 255); padding-top: 30px; " >
+        <div class="video-row">
+            <div class="col" style="padding-left:15%; padding-bottom:20px; display:grid;">
+                <figure style="margin:0;">
+                    <figcaption style="text-align:center; margin-bottom:8px;">
+                        These 4 blocking poses capture the gist of an action: a character steps forward, 
+                        kicks with the left leg, then steps back.
+                    </figcaption>
+                    <br><br><br>
+                    <img src="assets/images/kick_blocking.png" style="width:100%;">
+                </figure>
+            </div>
+            
+            <div class="col" style="padding-right:15%; padding-bottom:20px; display:grid;">
+                <figure style="margin:0;">
+                    <figcaption style="text-align:center; margin-bottom:8px;">
+                        Goel et al [2025]'s retiming model assumes that the input keyframes are perfectly posed, 
+                        and tries to preserve them exactly, which results in unnatural motion.
+                    </figcaption>
+                    <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
+                        <source src="./assets/videos/retiming.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+        </div>
+        <div class="video-row">
+            <div class="col" style="padding-left:15%; display:grid;">
+                <figure style="margin:0;">
+                    <figcaption style="text-align:center; margin-bottom:8px;">
+                        Using an automatically generated blending mask, as proposed by Shafir et al [2023] can lead to over-smooth results
+                    </figcaption>
+                    <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
+                        <source src="./assets/videos/softmask.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+            <div class="col" style="padding-right:15%; padding-bottom:20px; display:grid;">
+                <figure style="margin:0;">
+                    <figcaption style="text-align:center; margin-bottom:8px;">
+                        Our method creates a detailed motion with steps, a refined upper body position, and a natural, snappy kick.
+                    </figcaption>
+                    <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
+                        <source src="./assets/videos/ours.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="section2" style="background-color: rgb(240, 240, 240);">
+        <div class="container" style="padding-top: 30px; padding-bottom: 30px; text-align:center;">
+            <p> <b>Method Summary.</b> At certain diffusion steps, we blend the outputs of an unconditioned diffusion model (shown in light blue in the figure below) with the input blocking poses (shown in green) based on animator-controlled <i>per-blocking-pose</i> tolerance weights (shown as <i>c</i>). 
+                We pass the blended result as an <i>input condition</i> to the existing retiming model (dark blue). 
+                
+                This approach contrasts with standard blending approaches, which blend the <i>outputs</i> of diffusion models and rely on brittle heuristics to define <i>per-frame</i> blending masks.
+                
+                By refining the input condition, rather than model outputs, our approach allows the diffusion model to infer how each blocking pose should influence the in-between motion without requiring heuristics for setting per-frame blending masks.
+        </p>
+        </div>
+    </div>
+
+
+    <div style="background-color: rgb(255, 255, 255);">
+        <div class="container" style="padding-top: 30px; padding-bottom: 30px; display: flex; justify-content: center; gap: 20px;">
+            <img src="assets/images/method.png" style="width: 40%;">
+           
+        </div>
+    </div>
+
+     <div id="section4" style="background-color: rgb(240, 240, 240);">
+        <div class="container" style="padding-top: 30px; padding-bottom: 30px; text-align:center;">
+            <p><b>Results:</b> Our technique instruments a diffusion model to robustly convert blocking poses into detailed, natural looking character animations, offering direct support for an important animation workflow.
+        </div>
+    </div>
+
+    <div style="background-color: rgb(255, 255, 255); padding-top: 30px; " >
+            <div class="video-row">
+                <div class="col" style="padding-left:10%; display:grid;">
+                    <figure style="margin:0;">
+                        <figcaption style="text-align:center; margin-bottom:8px;">
+                            These 3 blocking poses capture a motion where the character jumps forward, kicks its legs out to the side, then lands. 
+                        </figcaption>
+                        <br><br><br><br>
+                        <img src="assets/images/jump_blocking.png" style="width:100%;">
+                    </figure>
+                </div>
+                <div class="col" style="padding-right:10%; display:grid;">
+                    <figure style="margin:0;">
+                        <figcaption style="text-align:center; margin-bottom:8px;">
+                            Our method creates a complete motion with detail even in joints that weren't posed in the input, like natural arm movements, realistic knee bend, and the jump itself.
+                        </figcaption>
+                        <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
+                            <source src="./assets/videos/jump_ours.mp4" type="video/mp4">
+                        </video>
+                    </figure>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="col" style="padding-left:10%; display:grid;">
+                    <figure style="margin:0;">
+                        <figcaption style="text-align:center; margin-bottom:8px;">
+                            These 2 blocking poses capture a motion where the character sits. Notice that the poses themselves are rough and underspecified.. 
+                        </figcaption>
+                        <br><br><br><br>
+                        <img src="assets/images/sit_blocking.png" style="width:100%;">
+                    </figure>
+                </div>
+                <div class="col" style="padding-right:10%; display:grid;">
+                    <figure style="margin:0;">
+                        <figcaption style="text-align:center; margin-bottom:8px;">
+                            Our method produces a complete motion and adding detail even in joints that weren't posed in the input, like natural arm movements, realistic balance, and a more natural sitting pose. 
+                        </figcaption>
+                        <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
+                            <source src="./assets/videos/sit_ours.mp4" type="video/mp4">
+                        </video>
+                    </figure>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="col" style="padding-left:10%; display:grid;">
+                    <figure style="margin:0;">
+                        <figcaption style="text-align:center; margin-bottom:8px;">
+                            These 2 blocking poses capture a motion walking with its arms way above its head. They're very coarsely posed, just a 90 degree rotation on both shoulders.
+                        </figcaption>
+                        <br><br><br><br>
+                        <img src="assets/images/raisearms_blocking.png" style="width:100%;">
+                    </figure>
+                </div>
+                <div class="col" style="padding-right:10%; display:grid;">
+                    <figure style="margin:0;">
+                        <figcaption style="text-align:center; margin-bottom:8px;">
+                            Our method creates a motion with realistic steps, and a more natural upper body position that still has the arms raised.
+                        </figcaption>
+                        <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
+                            <source src="./assets/videos/raisearms_ours.mp4" type="video/mp4">
+                        </video>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="section5" style="background-color: rgb(240, 240, 240);">
+        <div class="container" style="max-width: 768px; padding-top: 30px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>FAQ:</h2>
+                    <p><b> Where can I read more about the blocking workflow?</b></p>
+                    We recommend the following fantastic resources: 
+                    <ul>
+                        <li> GameAnim: Video Game Animation Explained by Jonathan Cooper [2021]</li>
+                        <li> The Animator's Survival Kit by Richard Williams [2009] </li>
+                        <li> Principles of traditional animation applied to 3D computer animation by John Lasster [1987]</li>
+                    </ul>
+                    
+
+                    <p> <b>What is the difference between motion detailing and motion inbetweening?</b></p>
+                    Motion inbetweening is a core task in both classical animation and modern motion generation,
+                     referring to the process of generating intermediate frames that transition smoothly between keyframes. 
+                     The core problem statement is: given a sparse set of key poses placed at specific times, generate a full motion 
+                     sequence that respects these poses exactly while producing natural, coherent transitions between them.
+
+                     This may seem like it can be used to generate motion from blocking poses, especially since blocking poses, like keyframes, are usually temporally sparse.
+                     However, motion inbetweening assumes that keyframes are well-posed and well-timed, i.e., it treats inputs as hard constraints.
+                     In contrast, blocking poses are intentionally rough: they are often underspecified, with only a handful of joints posed meaningfully, and they are placed at approximate times on the timeline. 
+                     While inbetweening assumes that input poses should be preserved exactly, motion detailing requires a system to potentially refine blocking poses themselves as well as generate the in-between motion.
+                     We therefore frame motion detailing as a more general, relaxed form of motion inbetweening.
+                     <br><br>
+                    
+                    
+                    <p> <b>Why blend the inputs of the diffusion model, not the outputs? </b></p>
+                    The challenge of both respecting the gist of blocking poses while also adding detail is similar to the goals of inference-time imputation or blending techniques[Tevet 23, Shafir 23, Goel 24] in diffusion models, which blend conditioned and unconditioned outputs using a blending mask <b>M</b>.
+                    
+                    Such masks are difficult to design: too narrow can cause discontinuities, too wide can cause the generated motion to adhere too closely to the undetailed blocking input, and heuristics for creating masks automatically are often brittle.
+                    
+                    Further, how much neighboring frames should be influenced by the blocking poses in the final detailed animation might be different per-animation, per-pose, or even per-joint.  
+
+                    Our key idea is that instead of requiring the animator to design a dense blending mask <b>M</b> by hand, we instead blend the <i>input blocking poses</i> throughout the diffusion process.
+                    <br><br>
+
+                    
+                    <p> <b>What is the runtime speed? How does it compare to other motion-inbetweening models?</b></p>
+                    The full system (diffusion model + constraint refinement) takes about 20 seconds at inference time. In terms of runtime cost, our method introduces a modest overhead of approximately 10% relative to the base model <i>R</i>. 
+                    Though this overhead could be further reduced through performance engineering (e.g., vectorized IK), most of the runtime is still attributable to the base model itself. 
+                    We believe that advances in accelerating diffusion models (see CLoSD [Tevet 2025], DPM-Solver [Lu 2022]) could directly benefit our approach and enable our system to run at interactive rates in the future.
+                    <br><br>
+
+                    <h4> <b>Hindsights/Looking Forward</b></h4>
+                    We’ve been reflecting on the role of blocking poses in real animation workflows. They act as a bridge between the animator’s high-level creative intent and the low-level details of motion, making them a natural and powerful input for next-generation, learning-based animation systems. In this role, they form a shared language between animator and system.
+
+                    Because blocking poses can be sourced, extracted, edited, or generated from higher-level modalities—such as text, images, or video demonstrations—they offer a flexible and interpretable intermediate representation. 
+                    We see strong potential for them to connect a wide range of high-level specifications to motion, a direction we explored in earlier work <a href="https://purvigoel.github.io/iterative-motion-editing/">[Goel 24]</a>, 
+                    about motion editing from text instructions, where textual edits were translated into modified blocking poses and then “detailed” into plausible motion (although we didn't realize this framing at the time!).
+                    <br><br>
+                    We are excited to see what new directions this broader line of work takes in the future 🚀
+                    <br><br>
+
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: rgb(30, 30, 30);">
+        <div class="container text-light" style="max-width: 768px; padding: 30px 0px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Acknowledgements:</h2>
+                    Purvi Goel is supported by a Stanford Interdisciplinary Graduate Fellowship. We thank the anonymous reviewers for constructive feedback; Vishnu Sarukkai, Sarah Jobalia, Sofia Di Toro Wyetzner, and Zander Majercik for helpful discussions; Meta for gift support.
+
+                     This website was developed referencing <a href="https://edge-dance.github.io/">EDGE</a>, and by extension, the excellent <a href="https://imagen.research.google/">Imagen</a> site.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
