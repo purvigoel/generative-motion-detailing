@@ -38,19 +38,19 @@
         <div class="container" style="max-width: 768px; padding-bottom: 20px;">
             <div class="row authors">
                 <div class="col">
-                    <h5 class="text-center"><a href="https://www.purvigoel.com/">Purvi Goel<sup>1</sup></a></h5>
+                    <h5 class="text-center"><a href="https://www.purvigoel.com/">Purvi Goel</a></h5>
                     <h6 class="text-center"></h6>
                 </div>
                 <div class="col">
-                    <h5 class="text-center"><a href="https://guytevet.github.io/">Guy Tevet<sup>1</sup></a></h5>
+                    <h5 class="text-center"><a href="https://guytevet.github.io/">Guy Tevet</a></h5>
                     <h6 class="text-center"></h6>
 		        </div>
                 <div class="col">
-                    <h5 class="text-center"><a href="https://tml.stanford.edu/">C. Karen Liu<sup>1</sup></a></h5>
+                    <h5 class="text-center"><a href="https://tml.stanford.edu/">C. Karen Liu</a></h5>
                     <h6 class="text-center"></h6>
 		</div>
 		<div class="col">
-                    <h5 class="text-center"><a href="https://graphics.stanford.edu/~kayvonf/">Kayvon Fatahalian<sup>1</sup></a></h5>
+                    <h5 class="text-center"><a href="https://graphics.stanford.edu/~kayvonf/">Kayvon Fatahalian</a></h5>
                     <h6 class="text-center"></h6>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         <div class="container" style="max-width: 768px; padding-bottom: 0px;">
             <div class="row authors">
                 <div class="col">
-                    <h6 style="margin-top: 10px;" class="text-center"><sup>1</sup>Stanford University</h6>
+                    <h6 style="margin-top: 10px;" class="text-center">Stanford University</h6>
                 </div>
             </div>
         </div>
@@ -162,7 +162,7 @@
             <div class="col" style="padding-left:15%; padding-bottom:20px; display:grid;">
                 <figure style="margin:0;">
                     <figcaption style="text-align:center; margin-bottom:8px;">
-                        These 4 blocking poses capture the gist of an action: a character steps forward, 
+                        <br>These 4 blocking poses capture the gist of an action: a character steps forward, 
                         kicks with the left leg, then steps back.
                     </figcaption>
                     <br><br><br>
@@ -173,7 +173,7 @@
             <div class="col" style="padding-right:15%; padding-bottom:20px; display:grid;">
                 <figure style="margin:0;">
                     <figcaption style="text-align:center; margin-bottom:8px;">
-                        Goel et al [2025]'s retiming model assumes that the input keyframes are perfectly posed, 
+                        <h5><b>Baseline #1:</b></h5> Goel et al [2025]'s retiming model assumes that the input keyframes are perfectly posed, 
                         and tries to preserve them exactly, which results in unnatural motion.
                     </figcaption>
                     <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
@@ -186,7 +186,7 @@
             <div class="col" style="padding-left:15%; display:grid;">
                 <figure style="margin:0;">
                     <figcaption style="text-align:center; margin-bottom:8px;">
-                        Using an automatically generated blending mask, as proposed by Shafir et al [2023] can lead to over-smooth results
+                       <h5><b>Baseline #2:</b></h5> Using an automatically generated blending mask, as proposed by Shafir et al [2023] can lead to over-smooth results
                     </figcaption>
                     <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
                         <source src="./assets/videos/softmask.mp4" type="video/mp4">
@@ -196,7 +196,7 @@
             <div class="col" style="padding-right:15%; padding-bottom:20px; display:grid;">
                 <figure style="margin:0;">
                     <figcaption style="text-align:center; margin-bottom:8px;">
-                        Our method creates a detailed motion with steps, a refined upper body position, and a natural, snappy kick.
+                        <h5><b>Ours:</b></h5> Our method creates a detailed motion with steps, a refined upper body position, and a natural, snappy kick.
                     </figcaption>
                     <video class="specialvideo video lazy img-fluid" muted loop playsinline controls style="width:100%">
                         <source src="./assets/videos/ours.mp4" type="video/mp4">
