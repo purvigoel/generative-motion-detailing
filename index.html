@@ -209,7 +209,7 @@
 
     <div id="section2" style="background-color: rgb(240, 240, 240);">
         <div class="container" style="padding-top: 30px; padding-bottom: 30px; text-align:center;">
-            <p> <b>Method Summary.</b> At certain diffusion steps, we blend the outputs of an unconditioned diffusion model (shown in light blue in the figure below) with the input blocking poses (shown in green) based on animator-controlled <i>per-blocking-pose</i> tolerance weights (shown as <i>c</i>). 
+            <p> <b>Method Summary.</b> At certain diffusion steps, we blend the outputs of an unconditioned diffusion model (shown in light blue in the figure below) with the input blocking poses (shown in orange) based on animator-controlled <i>per-blocking-pose</i> tolerance weights (shown as <i>c</i>). 
                 We pass the blended result as an <i>input condition</i> to the existing retiming model (dark blue). 
                 
                 This approach contrasts with standard blending approaches, which blend the <i>outputs</i> of diffusion models and rely on brittle heuristics to define <i>per-frame</i> blending masks.
